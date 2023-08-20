@@ -16,6 +16,9 @@ functions:
     handler: wsgi_handler.handler
     events:
       - httpApi: '*'
+    environment:
+      RESEMBLE_API_KEY: ${ssm:/text-to-speech-resemble-ai/api-key}
+      API_URL: !GetAtt HttpApi.ApiEndpoint
 
 plugins:
   - serverless-wsgi
